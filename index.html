@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Горизонт — премиальное туристическое агентство. Туры, направления и персональный сервис." />
+  <title>Горизонт — Премиальные путешествия</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header header--hero" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo">
+        <svg class="logo__mark" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 16l6-8 6 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Горизонт</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" aria-label="Навигация">
+        <a href="#tours">Туры</a>
+        <a href="#destinations">Направления</a>
+        <a href="#benefits">Преимущества</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#booking" class="nav__cta">Заявка</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__media">
+        <img
+          class="hero__img"
+          src="images/hero.jpg"
+          alt=""
+          width="2400"
+          height="1600"
+          fetchpriority="high"
+        />
+        <div class="hero__shade"></div>
+      </div>
+      <div class="container hero__body">
+        <div class="hero__copy animate-in" style="--i:0">
+          <p class="eyebrow">Премиум · 4.9 ★ · 12 000+ гостей</p>
+          <h1>Найдите путешествие<br />вашей мечты</h1>
+          <p class="lead">Отбор отелей, прямые рейсы и личный менеджер — как в лучших сервисах бронирования мира.</p>
+        </div>
+        <form class="hero-search animate-in" style="--i:1" action="#booking" aria-label="Быстрый поиск тура">
+          <label class="hero-search__field">
+            <span class="hero-search__label">Направление</span>
+            <select name="quick-destination" aria-label="Направление">
+              <option>Турция</option>
+            </select>
+          </label>
+          <label class="hero-search__field">
+            <span class="hero-search__label">Ночей</span>
+            <select name="quick-nights" aria-label="Количество ночей">
+              <option>5–7</option>
+              <option>8–10</option>
+              <option>11–14</option>
+            </select>
+          </label>
+          <a href="#booking" class="btn btn--accent hero-search__submit">Подобрать тур</a>
+        </form>
+      </div>
+    </section>
+
+    <!-- Популярные туры -->
+    <section class="section" id="tours">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">Подборка недели</p>
+            <h2>Популярные туры</h2>
+          </div>
+          <a href="#booking" class="section-head__link">Все туры →</a>
+        </div>
+        <div class="carousel reveal">
+          <div class="carousel__track" id="tours-track" tabindex="0" aria-label="Список популярных туров">
+            <p class="tours-loading">Загрузка туров…</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Направления -->
+    <section class="section section--soft" id="destinations">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <div>
+            <p class="eyebrow">Куда лететь сейчас</p>
+            <h2>Популярные направления</h2>
+          </div>
+        </div>
+        <div class="dest-grid reveal" id="destinations-grid">
+          <p class="tours-loading">Загрузка направлений…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="section" id="benefits">
+      <div class="container">
+        <div class="section-head section-head--center reveal">
+          <div>
+            <p class="eyebrow">Почему Горизонт</p>
+            <h2>Сервис, которому доверяют</h2>
+          </div>
+        </div>
+        <div class="benefits reveal">
+          <article class="benefit">
+            <div class="benefit__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7-6.3-4.6L5.7 21l2.3-7-6-4.6h7.6L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Отбор 5★ отелей</h3>
+            <p>Только проверенные объекты с рейтингом гостей 4.8+ и прозрачными условиями.</p>
+          </article>
+          <article class="benefit">
+            <div class="benefit__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3>Гарантия лучшей цены</h3>
+            <p>Нашли дешевле — вернём разницу или улучшим условия без доплат.</p>
+          </article>
+          <article class="benefit">
+            <div class="benefit__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.5"/><path d="M4 10h16M8 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Личный менеджер</h3>
+            <p>Один специалист ведёт заявку от звонка до возвращения домой.</p>
+          </article>
+          <article class="benefit">
+            <div class="benefit__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4.5 8-11V6l-8-3-8 3v5c0 6.5 8 11 8 11z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Поддержка 24/7</h3>
+            <p>На связи в мессенджере в любой точке мира — ответ в среднем за 12 минут.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="section section--soft" id="reviews">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <p class="eyebrow">4.9 из 5 · 2 400+ отзывов</p>
+            <h2>Гости о путешествиях</h2>
+          </div>
+        </div>
+        <div class="reviews-grid reveal">
+          <blockquote class="review-card">
+            <div class="review-card__top">
+              <img class="review-card__photo" src="images/review-1.jpg" alt="" width="56" height="56" loading="lazy" />
+              <div>
+                <cite>Елена Козлова</cite>
+                <span>Анталья · июль 2025</span>
+              </div>
+              <span class="review-card__stars" aria-label="5 из 5">★★★★★</span>
+            </div>
+            <p>«С детьми в Турцию — менеджер подобрала отель с клубом. Перелёт и трансфер без стресса, отдых идеальный.»</p>
+          </blockquote>
+          <blockquote class="review-card">
+            <div class="review-card__top">
+              <img class="review-card__photo" src="images/review-2.jpg" alt="" width="56" height="56" loading="lazy" />
+              <div>
+                <cite>Дмитрий Волков</cite>
+                <span>Италия · сентябрь 2025</span>
+              </div>
+              <span class="review-card__stars" aria-label="5 из 5">★★★★★</span>
+            </div>
+            <p>«Свадебное путешествие за две недели: Рим, Флоренция, Венеция. Маршрут продуман, отели — на уровне.»</p>
+          </blockquote>
+          <blockquote class="review-card">
+            <div class="review-card__top">
+              <img class="review-card__photo" src="images/review-3.jpg" alt="" width="56" height="56" loading="lazy" />
+              <div>
+                <cite>Алина Смирнова</cite>
+                <span>Дубай · март 2026</span>
+              </div>
+              <span class="review-card__stars" aria-label="5 из 5">★★★★★</span>
+            </div>
+            <p>«Оформили всё под ключ, отель с видом на Бурдж-Халифу. Чувствовала себя как VIP-гость.»</p>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Заявка -->
+    <section class="section" id="booking">
+      <div class="container booking-layout reveal">
+        <div class="booking-layout__text">
+          <p class="eyebrow">Бесплатная консультация</p>
+          <h2>Оставьте заявку</h2>
+          <p class="lead">Перезвоним за 30 минут и пришлём 2–3 варианта тура под ваш бюджет.</p>
+        </div>
+        <form class="form" id="booking-form" novalidate>
+          <div class="form__fields" id="form-fields">
+            <label class="form__field">
+              <span>Имя</span>
+              <input type="text" name="name" placeholder="Иван Иванов" required autocomplete="name" />
+            </label>
+            <label class="form__field">
+              <span>Телефон</span>
+              <input type="tel" name="phone" placeholder="+7 (999) 123-45-67" required autocomplete="tel" />
+            </label>
+            <label class="form__field">
+              <span>Направление</span>
+              <select name="destination" required>
+                <option value="" disabled selected>Выберите направление</option>
+              </select>
+            </label>
+            <button type="submit" class="btn btn--accent btn--block">Отправить заявку</button>
+          </div>
+          <p class="form__error" id="form-error" hidden role="alert"></p>
+          <p class="form__success" id="form-success" hidden role="status">
+            Спасибо за заявку, мы свяжемся с вами.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <a href="#top" class="logo logo--dark">
+        <svg class="logo__mark" width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 16l6-8 6 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Горизонт</span>
+      </a>
+      <p class="footer__phone"><a href="tel:+78001234567">8 800 123-45-67</a></p>
+      <p class="footer__mail"><a href="mailto:hello@horizon-travel.ru">hello@horizon-travel.ru</a></p>
+      <p class="footer__copy">© 2026 Горизонт · <a href="admin.html">Админ</a></p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="api.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

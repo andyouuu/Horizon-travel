@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Админ-панель — Горизонт</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="admin" id="app">
+    <p class="admin-banner" id="config-banner" hidden>
+      Укажите <code>API_URL</code> в файле <code>config.js</code> — см. NASTROYKA.md
+    </p>
+
+    <section class="admin-login" id="login-screen">
+      <div class="admin-login__card">
+        <h1>Горизонт</h1>
+        <p class="admin-login__sub">Вход для администратора</p>
+        <form id="login-form">
+          <label>
+            <span>Пароль</span>
+            <input type="password" name="password" required autocomplete="current-password" />
+          </label>
+          <button type="submit" class="btn btn--accent btn--block">Войти</button>
+        </form>
+        <p class="admin-msg admin-msg--error" id="login-error" hidden role="alert"></p>
+        <p class="admin-msg admin-msg--ok" id="login-status" hidden role="status"></p>
+          <p class="admin-login__hint">
+            <a href="index.html">← На сайт</a>
+            · <button type="button" class="admin-link" id="btn-clear-session">Сбросить вход</button>
+          </p>
+      </div>
+    </section>
+
+    <section class="admin-panel is-hidden" id="panel-screen">
+      <header class="admin-header">
+        <div>
+          <h1>Управление турами</h1>
+          <p class="admin-header__sub">Все изменения сохраняются в Google Таблицу (лист «Туры»)</p>
+        </div>
+        <div class="admin-header__actions">
+          <button type="button" class="btn btn--ghost" id="btn-refresh">Обновить</button>
+          <button type="button" class="btn btn--accent" id="btn-new-tour">+ Новый тур</button>
+          <button type="button" class="btn btn--ghost" id="btn-logout">Выйти</button>
+        </div>
+      </header>
+
+      <p class="admin-msg admin-msg--error" id="panel-error" hidden></p>
+      <p class="admin-msg admin-msg--ok" id="panel-success" hidden></p>
+
+      <div class="admin-grid">
+        <div class="admin-list-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>№</th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Сайт</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="tours-tbody">
+              <tr><td colspan="6">Загрузка…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <form class="admin-form" id="tour-form" hidden>
+          <h2 id="form-title">Новый тур</h2>
+          <input type="hidden" name="id" />
+
+          <label class="admin-check">
+            <input type="checkbox" name="active" checked />
+            <span>Показывать на сайте</span>
+          </label>
+
+          <div class="admin-form__row">
+            <label>
+              <span>Порядок в ленте</span>
+              <input type="number" name="sort" value="1" min="1" />
+            </label>
+            <label>
+              <span>Цена, ₽</span>
+              <input type="number" name="price" required min="0" step="1000" />
+            </label>
+          </div>
+
+          <label>
+            <span>Название тура</span>
+            <input type="text" name="title" required placeholder="Турция, Анталья — 5★" />
+          </label>
+
+          <label>
+            <span>Описание</span>
+            <textarea name="subtitle" rows="3" placeholder="Прямой перелёт · трансфер · страховка"></textarea>
+          </label>
+
+          <div class="admin-form__row">
+            <label>
+              <span>Рейтинг</span>
+              <input type="text" name="rating" value="4.95" placeholder="4.97" />
+            </label>
+            <label>
+              <span>Длительность</span>
+              <input type="text" name="nights" placeholder="7 ночей" />
+            </label>
+          </div>
+
+          <div class="admin-form__row">
+            <label>
+              <span>Тег на карточке</span>
+              <input type="text" name="tag" placeholder="Всё включено" />
+            </label>
+            <label>
+              <span>Направление (в форме заявки)</span>
+              <input type="text" name="destination" required placeholder="Турция" />
+            </label>
+          </div>
+
+          <div class="admin-photo">
+            <span class="admin-photo__label">Фотография</span>
+            <div class="admin-photo__preview-wrap">
+              <img id="image-preview" class="admin-photo__preview" src="" alt="Превью тура" hidden />
+              <p id="image-preview-empty" class="admin-photo__empty">Превью появится здесь</p>
+            </div>
+            <label class="admin-photo__upload">
+              <span class="btn btn--ghost">Загрузить с компьютера</span>
+              <input type="file" id="image-file" accept="image/jpeg,image/png,image/webp" hidden />
+            </label>
+            <label>
+              <span>Или ссылка / путь к файлу</span>
+              <input type="text" name="image" placeholder="images/tour-turkey.jpg или https://..." />
+            </label>
+            <small>Загрузка сохранит фото в Google Диск и подставит ссылку. Локально: файл в папку <code>images/</code>.</small>
+            <p class="admin-photo__status" id="upload-status" hidden></p>
+          </div>
+
+          <div class="admin-form__row">
+            <label>
+              <span>Бейдж (необязательно)</span>
+              <input type="text" name="badge" placeholder="Хит продаж" />
+            </label>
+            <label class="admin-check admin-check--inline">
+              <input type="checkbox" name="badgeDark" />
+              <span>Тёмный бейдж</span>
+            </label>
+          </div>
+
+          <div class="admin-form__actions">
+            <button type="submit" class="btn btn--accent" id="btn-save">Сохранить в таблицу</button>
+            <button type="button" class="btn btn--ghost" id="btn-cancel">Отмена</button>
+            <button type="button" class="btn btn--danger" id="btn-delete" hidden>Удалить тур</button>
+          </div>
+        </form>
+      </div>
+
+      <footer class="admin-footer">
+        <p>Заявки клиентов — лист «Заявки» в Google Таблице. Уведомления — Telegram.</p>
+        <p><a href="index.html" target="_blank" rel="noopener">Открыть сайт</a> · <a href="NASTROYKA.md" target="_blank" rel="noopener">Инструкция</a></p>
+      </footer>
+    </section>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="api.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
